@@ -1,20 +1,27 @@
 <div class="container">
   <app-cockpit
     (serverCreated)="onServerAdded($event)"
-    (bluePrintCreated)="onBlueprintAdded($event)"
-    (clickMeData)="onAppComponentClickedData($event)"
+    (bpCreated)="onBlueprintAdded($event)"
   ></app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
       <app-server-element
         *ngFor="let serverElement of serverElements"
-        [element]="serverElements[0]">
+        [element]="serverElement">
+
+        <p>
+          <strong *ngIf="serverElement.type === 'server'" style="color: red">{{
+            serverElement.content
+          }}</strong>
+          <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+        </p>
+
       </app-server-element>
     </div>
   </div>
 </div>
 
-<h1>{{ receivedData }}</h1>
+<button class="btn btn-danger" (click)="onDelete()">DELETE</button>
 
 

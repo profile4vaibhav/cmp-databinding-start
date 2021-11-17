@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
   receivedData: any;
@@ -30,5 +31,9 @@ export class AppComponent {
 
   onAppComponentClickedData(cockpitData) {
     this.receivedData = cockpitData;
+  }
+
+  onDelete() {
+    this.serverElements.splice(0,1);
   }
 }
